@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
@@ -24,12 +23,10 @@ export default function RootLayout({
   return (
     <html
       lang='en'
-      className={cn("min-h-screen bg-dark-300 font-sans antialiased", fontSans.variable, "font-sans")}
+      className={cn("dark min-h-screen bg-dark-300 font-sans antialiased", fontSans.variable, "font-sans")}
     >
       <body className='min-h-full flex flex-col'>
-        <ThemeProvider attribute='class' defaultTheme='dark'>
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );
