@@ -5,24 +5,25 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #1c212b;
+  --background: #222a3a;
   --foreground: #ffffff;
   --card: #222a3a;
   --card-foreground: #ffffff;
   --popover: #222a3a;
   --popover-foreground: #ffffff;
-  --primary: #8b5cf6;
-  --accent: #a955f7;
+  --primary: #9060fe;
+  --accent: #b98bfa;
   --primary-foreground: #ffffff;
   --secondary: #152432;
   --secondary-foreground: #ffffff;
-  --muted: #283552;
-  --muted-foreground: #76828d;
+  --muted: #2a3448;
+  --muted-foreground: #7b91a8;
   --accent-foreground: #ffffff;
-  --destructive: #e64064;
-  --border: #506080;
-  --input: #283552;
-  --ring: #8b5cf6;
+  --destructive: #eb6491;
+  --border: #5a68a2;
+  --input: #2a3448;
+  --ring: #9060fe;
+  --input-icon: #7a9ce0;
   --color-green-500: #b6f09c;
   --color-green-600: #416050;
   --color-blue-500: #79b5ec;
@@ -32,10 +33,10 @@
   --color-light-200: #e8e9e9;
   --color-dark-200: #0d0f10;
   --color-dark-300: #131619;
-  --color-dark-400: #1a1d21;
-  --color-dark-500: #222a3a;
+  --color-dark-400: #2a3448;
+  --color-dark-500: #5a68a2;
   --color-dark-600: #7b91a8;
-  --color-dark-700: #b4c7d9;
+  --color-dark-700: #cedeed;
 }
 
 @theme inline {
@@ -57,6 +58,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-input-icon: var(--input-icon);
   --color-green-500: var(--color-green-500);
   --color-green-600: var(--color-green-600);
   --color-blue-500: var(--color-blue-500);
@@ -265,7 +267,7 @@
     @apply flex w-full flex-col justify-between gap-5 sm:flex-row xl:gap-10;
   }
 
-  /* FORM */
+  /* Form */
   .radio-group {
     @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-dark-500 bg-dark-400 p-3;
   }
@@ -302,9 +304,9 @@
     @apply flex w-full items-center justify-between space-x-2 p-4;
   }
 
-  /*  shadcn overrides */
+  /*  Shadcn overrides */
   .shad-primary-btn {
-    @apply !bg-green-500 !text-white;
+    @apply !flex !p-5 !bg-primary !text-primary-foreground text-[16px] !font-medium hover:!bg-primary/90;
   }
 
   .shad-danger-btn {
@@ -320,11 +322,15 @@
   }
 
   .shad-input {
-    @apply !bg-dark-400 placeholder:!text-dark-600 !border-dark-500 !h-11 focus-visible:!ring-0 focus-visible:!ring-offset-0;
+    @apply !bg-dark-400 placeholder:!text-dark-600 border-dark-500 !h-11;
+  }
+
+  .shad-input-text {
+    @apply !text-14-medium;
   }
 
   .shad-input-icon {
-    @apply !bg-dark-400 placeholder:!text-dark-600 !border-dark-500 !h-11 focus-visible:!ring-0 focus-visible:!ring-offset-0;
+    @apply !size-5 !text-input-icon;
   }
 
   .shad-textArea {
@@ -389,7 +395,28 @@
 
   /*  reacty phone number overrides */
   .input-phone {
-    @apply !mt-2 !h-11 !rounded-md !px-3 !text-sm !border !bg-dark-400 placeholder:!text-dark-600 !border-dark-500;
+    @apply !h-11 items-center justify-center !rounded-lg !border !border-dark-500 !bg-dark-400 transition-colors placeholder:!text-dark-600 focus-within:!border-ring focus-within:!ring-3 focus-within:!ring-ring/50 has-aria-invalid:!border-destructive has-aria-invalid:!ring-3 has-aria-invalid:!ring-destructive/20 dark:has-aria-invalid:!border-destructive/50 dark:has-aria-invalid:!ring-destructive/40;
+
+    &.PhoneInput--focus {
+      @apply !border-ring !ring-3 !ring-ring/50;
+    }
+
+    &[aria-invalid="true"],
+    &:has([aria-invalid="true"]) {
+      @apply !border-destructive !ring-3 !ring-destructive/20 dark:!border-destructive/50 dark:!ring-destructive/40;
+    }
+
+    span {
+      @apply !size-[20px] !text-input-icon;
+    }
+
+    button {
+      @apply !border-0 !shadow-none !outline-none !ring-0 !ring-offset-0 focus:!border-0 focus:!shadow-none focus:!outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!border-0 focus-visible:!shadow-none focus-visible:!outline-none focus-visible:!ring-0 focus-visible:!ring-offset-0;
+    }
+
+    input {
+      @apply !m-0 !border-0 !bg-transparent !p-0 !shadow-none !outline-none !ring-0 !ring-offset-0 focus:!border-0 focus:!shadow-none focus:!outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!border-0 focus-visible:!shadow-none focus-visible:!outline-none focus-visible:!ring-0 focus-visible:!ring-offset-0;
+    }
   }
 
   /* react date picker overrides */
@@ -409,8 +436,8 @@
 .react-datepicker__day-name,
 .react-datepicker__day,
 .react-datepicker-time__header {
-  background-color: #1a1d21 !important;
-  border-color: #363a3d !important;
+  background-color: #2a3448 !important;
+  border-color: #5a68a2 !important;
   color: #abb8c4 !important;
 }
 
@@ -421,33 +448,33 @@
 }
 
 .react-datepicker__triangle {
-  fill: #1a1d21 !important;
-  color: #1a1d21 !important;
-  stroke: #1a1d21 !important;
+  fill: #2a3448 !important;
+  color: #2a3448 !important;
+  stroke: #2a3448 !important;
 }
 
 .react-datepicker__time-list-item:hover {
-  background-color: #363a3d !important;
+  background-color: #5a68a2 !important;
 }
 
 .react-datepicker__input-container input {
-  background-color: #1a1d21 !important;
+  background-color: #2a3448 !important;
   width: 100%;
   outline: none;
 }
 
 .react-datepicker__day--selected {
-  background-color: #8b5cf6 !important;
+  background-color: #9060fe !important;
   color: #ffffff !important;
   border-radius: 4px;
 }
 
 .react-datepicker__time-list-item--selected {
-  background-color: #8b5cf6 !important;
+  background-color: #9060fe !important;
 }
 
 .react-datepicker__time-container {
-  border-left: 1px solid #363a3d !important;
+  border-left: 1px solid #5a68a2 !important;
 }
 
 .react-datepicker__time-list-item {
@@ -457,13 +484,24 @@
 
 /* react phone number input overrides */
 .PhoneInputInput {
-  outline: none;
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
   margin-left: 4px;
-  background: #1a1d21;
+  background: transparent !important;
   font-size: 14px;
   font-weight: 500;
 }
 
+.PhoneInputInput:focus,
+.PhoneInputInput:focus-visible {
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+}
+
 .PhoneInputInput::placeholder {
-  color: #1a1d21;
+  color: #2a3448;
 }
