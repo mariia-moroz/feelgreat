@@ -229,7 +229,7 @@
     @apply text-18-bold md:text-24-bold;
   }
 
-  .container {
+  .page-shell {
     @apply relative flex-1 overflow-y-auto px-[5%];
   }
 
