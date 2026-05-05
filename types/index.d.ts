@@ -1,0 +1,37 @@
+declare type Gender = "male" | "female" | "other";
+
+declare type SearchParamProps = {
+  params: { [key: string]: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+declare interface CreateUserParams {
+  name: string;
+  email: string;
+  phone: string;
+}
+
+declare interface User extends CreateUserParams {
+  $id: string;
+}
+
+declare interface RegisterUserParams extends CreateUserParams {
+  userId: string;
+  birthDate: Date;
+  gender: Gender;
+  address: string;
+  occupation: string;
+  emergencyContactName: string;
+  emergencyContactNumber?: string;
+  primaryPhysician: string;
+  insuranceProvider: string;
+  insurancePolicyNumber: string;
+  allergies?: string;
+  currentMedication?: string;
+  familyMedicalHistory?: string;
+  pastMedicalHistory?: string;
+  identificationType?: string;
+  identificationNumber?: string;
+  identificationDocument?: FormData;
+  privacyConsent: boolean;
+}
