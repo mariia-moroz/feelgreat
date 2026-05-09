@@ -21,11 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang='en'
-      className={cn("dark min-h-screen bg-dark-300 font-sans antialiased", fontSans.variable, "font-sans")}
-    >
-      <body className='min-h-full flex flex-col'>
+    <html lang='en'>
+      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         {children}
       </body>
     </html>

@@ -8,6 +8,8 @@ import * as z from "zod";
 
 import { UserFormValidation } from "@/lib/validation";
 
+import { createUser } from "@/lib/actions/patient.actions";
+
 import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { FormFieldType } from "../CustomFormField";
@@ -30,16 +32,24 @@ const PaientForm = () => {
     setIsLoading(true);
 
     try {
-    } catch (err) {
-      console.log(err);
+      const userData = { name, email, phone };
+      const user = await createUser(userData);
+
+      if (user) {
+        router.push(`/patients/${user.$id}/register`);
+      }
+    } catch (error) {
+      console.log(error);
     }
+
+    setIsLoading(false);
   };
 
   return (
     <form id='patient-form' onSubmit={form.handleSubmit(onSubmit)} className='space-y-9 flex-1'>
       <section className='mb-12 space-y-4'>
         <h1 className='header'>Hi there 👋</h1>
-        <p className='text-dark-700'>Get started with appointments!</p>
+        <p className='text-dark-700 text-18-medium'>Get started with appointments!</p>
       </section>
 
       <div className='space-y-6 flex-1'>
@@ -60,7 +70,7 @@ const PaientForm = () => {
           id='patient-form-email'
           name='email'
           type='email'
-          label='Email'
+          label='Email address'
           placeholder='email@gmail.com'
           FieldIcon={MailIcon}
         />

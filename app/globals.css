@@ -124,6 +124,10 @@
   @apply text-[18px] leading-[24px] font-bold;
 }
 
+@utility text-18-medium {
+  @apply text-[18px] leading-[24px] font-medium;
+}
+
 @utility text-16-semibold {
   @apply text-[16px] leading-[20px] font-semibold;
 }
@@ -229,7 +233,7 @@
     @apply text-18-bold md:text-24-bold;
   }
 
-  .page-shell {
+  .page-container {
     @apply relative flex-1 overflow-y-auto px-[5%];
   }
 
@@ -270,6 +274,14 @@
   /* Form */
   .radio-group {
     @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-dark-500 bg-dark-400 p-3;
+
+    button {
+      @apply border-dark-500 bg-transparent text-accent data-[state=checked]:border-accent data-[state=checked]:bg-accent;
+    }
+
+    button [data-slot="radio-group-indicator"] span {
+      @apply bg-input;
+    }
   }
 
   .checkbox-label {
@@ -322,7 +334,10 @@
   }
 
   .shad-input {
-    @apply !bg-dark-400 placeholder:!text-dark-600 border-dark-500 !h-11;
+    @apply !text-14-medium !bg-dark-400 placeholder:!text-dark-600 border-dark-500 !h-11 caret-primary;
+    input {
+      @apply !rounded-lg !mx-1;
+    }
   }
 
   .shad-input-text {
@@ -334,7 +349,7 @@
   }
 
   .shad-textArea {
-    @apply !bg-dark-400 placeholder:!text-dark-600 !border-dark-500 focus-visible:!ring-0 focus-visible:!ring-offset-0;
+    @apply !font-medium !bg-dark-400 placeholder:!text-dark-600 !border-dark-500 caret-primary focus-visible:!ring-0 focus-visible:!ring-offset-0;
   }
 
   .shad-combobox-item {
@@ -345,12 +360,20 @@
     @apply !h-11;
   }
 
+  .shad-checkbox {
+    @apply !border-dark-500 data-[state=checked]:!border-accent data-[state=checked]:!bg-accent data-[state=checked]:!text-accent-foreground dark:aria-invalid:!border-destructive aria-invalid:!border-destructive;
+  }
+
   .shad-select-trigger {
-    @apply !bg-dark-400 placeholder:!text-dark-600 !border-dark-500 !h-11 focus:!ring-0 focus:!ring-offset-0;
+    @apply !text-14-medium !bg-dark-400 placeholder:!text-dark-600 !border-dark-500 !h-11 focus:!ring-0 focus:!ring-offset-0;
+
+    svg {
+      @apply !stroke-accent;
+    }
   }
 
   .shad-select-content {
-    @apply !bg-dark-400 !border-dark-500;
+    @apply !text-14-medium !bg-dark-400 !border-dark-500;
   }
 
   .shad-dialog {
@@ -395,7 +418,7 @@
 
   /*  reacty phone number overrides */
   .input-phone {
-    @apply !h-11 items-center justify-center !rounded-lg !border !border-dark-500 !bg-dark-400 transition-colors placeholder:!text-dark-600 focus-within:!border-ring focus-within:!ring-3 focus-within:!ring-ring/50 has-aria-invalid:!border-destructive has-aria-invalid:!ring-3 has-aria-invalid:!ring-destructive/20 dark:has-aria-invalid:!border-destructive/50 dark:has-aria-invalid:!ring-destructive/40;
+    @apply !h-11 !text-14-medium items-center justify-center !rounded-lg !border !border-dark-500 !bg-dark-400 transition-colors placeholder:!text-dark-600 focus-within:!border-ring focus-within:!ring-3 focus-within:!ring-ring/50 has-aria-invalid:!border-destructive has-aria-invalid:!ring-3 has-aria-invalid:!ring-destructive/20 dark:has-aria-invalid:!border-destructive/50 dark:has-aria-invalid:!ring-destructive/40;
 
     &.PhoneInput--focus {
       @apply !border-ring !ring-3 !ring-ring/50;
@@ -411,97 +434,16 @@
     }
 
     button {
-      @apply !border-0 !shadow-none !outline-none !ring-0 !ring-offset-0 focus:!border-0 focus:!shadow-none focus:!outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!border-0 focus-visible:!shadow-none focus-visible:!outline-none focus-visible:!ring-0 focus-visible:!ring-offset-0;
+      @apply !bg-input !border-0 !shadow-none !outline-none !ring-0 !ring-offset-0 focus:!border-0 focus:!shadow-none focus:!outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!border-0 focus-visible:!shadow-none focus-visible:!outline-none focus-visible:!ring-0 focus-visible:!ring-offset-0 !mr-0 !pr-0;
     }
 
     input {
-      @apply !m-0 !border-0 !bg-transparent !p-0 !shadow-none !outline-none !ring-0 !ring-offset-0 focus:!border-0 focus:!shadow-none focus:!outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!border-0 focus-visible:!shadow-none focus-visible:!outline-none focus-visible:!ring-0 focus-visible:!ring-offset-0;
+      @apply !rounded-lg !mx-1 !border-0 !bg-transparent !shadow-none !outline-none !ring-0 !ring-offset-0 caret-primary focus:!border-0 focus:!shadow-none focus:!outline-none focus:!ring-0 focus:!ring-offset-0 focus-visible:!border-0 focus-visible:!shadow-none focus-visible:!outline-none focus-visible:!ring-0 focus-visible:!ring-offset-0 !px-2;
     }
   }
 
   /* react date picker overrides */
-  .date-picker {
-    @apply !overflow-hidden !border-transparent !w-full placeholder:!text-dark-600 !h-11 !text-14-medium !rounded-md !px-3 !outline-none;
+  .shad-input-datepicker {
+    @apply !bg-dark-400 placeholder:!text-dark-600 border-dark-500 !h-11 focus-visible:!border-ring focus-visible:!ring-3 focus-visible:!ring-ring/50 data-[state=open]:!border-ring data-[state=open]:!ring-3 data-[state=open]:!ring-ring/50;
   }
-}
-.react-datepicker-wrapper.date-picker {
-  display: flex;
-  align-items: center;
-}
-
-.react-datepicker,
-.react-datepicker__time,
-.react-datepicker__header,
-.react-datepicker__current-month,
-.react-datepicker__day-name,
-.react-datepicker__day,
-.react-datepicker-time__header {
-  background-color: #2a3448 !important;
-  border-color: #5a68a2 !important;
-  color: #abb8c4 !important;
-}
-
-.react-datepicker__current-month,
-.react-datepicker__day-name,
-.react-datepicker-time__header {
-  color: #ffffff !important;
-}
-
-.react-datepicker__triangle {
-  fill: #2a3448 !important;
-  color: #2a3448 !important;
-  stroke: #2a3448 !important;
-}
-
-.react-datepicker__time-list-item:hover {
-  background-color: #5a68a2 !important;
-}
-
-.react-datepicker__input-container input {
-  background-color: #2a3448 !important;
-  width: 100%;
-  outline: none;
-}
-
-.react-datepicker__day--selected {
-  background-color: #9060fe !important;
-  color: #ffffff !important;
-  border-radius: 4px;
-}
-
-.react-datepicker__time-list-item--selected {
-  background-color: #9060fe !important;
-}
-
-.react-datepicker__time-container {
-  border-left: 1px solid #5a68a2 !important;
-}
-
-.react-datepicker__time-list-item {
-  display: flex !important;
-  align-items: center !important;
-}
-
-/* react phone number input overrides */
-.PhoneInputInput {
-  border: 0 !important;
-  outline: none !important;
-  box-shadow: none !important;
-  margin-left: 4px;
-  background: transparent !important;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.PhoneInputInput:focus,
-.PhoneInputInput:focus-visible {
-  border: 0 !important;
-  outline: none !important;
-  box-shadow: none !important;
-  --tw-ring-shadow: 0 0 #0000 !important;
-  --tw-ring-offset-shadow: 0 0 #0000 !important;
-}
-
-.PhoneInputInput::placeholder {
-  color: #2a3448;
 }
