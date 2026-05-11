@@ -20,7 +20,7 @@ import Image from "next/image";
 import FileUploader from "../FileUploader";
 
 type PatientFormValues = z.input<typeof PatientFormValidation>;
-type PatientFormData = z.output<typeof PatientFormValidation>;
+type PatientFormData = z.infer<typeof PatientFormValidation>;
 
 const RegisterForm = ({ user }: { user: User }) => {
   const [isLoading, setIsLoading] = useState(false);

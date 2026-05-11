@@ -78,3 +78,15 @@ export const StatusIcon = {
   pending: "/assets/icons/pending.svg",
   cancelled: "/assets/icons/cancelled.svg",
 };
+
+export enum AppointmentType {
+  CREATE = "create",
+  CANCEL = "cancel",
+  SCHEDULE = "schedule",
+}
+
+export enum AppointmentStatus {
+  SCHEDULLED = "scheduled",
+  CANCELLED = "cancelled",
+  PENDING = "pending",
+}
