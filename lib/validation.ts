@@ -1,3 +1,4 @@
+import { AppointmentType } from "@/constants";
 import * as z from "zod";
 
 export const UserFormValidation = z.object({
@@ -61,3 +62,38 @@ export const PatientFormValidation = z.object({
       message: "You must consent to privacy in order to proceed",
     }),
 });
+
+export const CreateAppointmentSchema = z.object({
+  primaryPhysician: z.string().min(2, "Please select physician"),
+  schedule: z.coerce.date().min(2, "Please provide date"),
+  reason: z.string().min(2, "Please provide reason"),
+  note: z.string().optional(),
+  cancellationReason: z.string().optional(),
+});
+
+export const ScheduleAppointmentSchema = z.object({
+  primaryPhysician: z.string().min(2, "Please select physician"),
+  schedule: z.coerce.date().min(2, "Please provide date"),
+  reason: z.string().optional(),
+  note: z.string().optional(),
+  cancellationReason: z.string().optional(),
+});
+
+export const CancelAppointmentSchema = z.object({
+  primaryPhysician: z.string(),
+  schedule: z.coerce.date(),
+  reason: z.string().optional(),
+  note: z.string().optional(),
+  cancellationReason: z.string().min(2, "Please provide reason"),
+});
+
+export function getAppointmentSchema(type: string) {
+  switch (type) {
+    case AppointmentType.CREATE:
+      return CreateAppointmentSchema;
+    case AppointmentType.CANCEL:
+      return CancelAppointmentSchema;
+    default:
+      return ScheduleAppointmentSchema;
+  }
+}

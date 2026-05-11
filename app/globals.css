@@ -249,16 +249,20 @@
     @apply text-14-regular justify-items-end text-center text-dark-600 xl:text-left;
   }
 
-  /* SUCCESS */
+  /* Success */
   .success-img {
     @apply m-auto flex flex-1 flex-col items-center justify-between gap-10 py-10;
   }
 
   .request-details {
-    @apply flex w-full flex-col items-center gap-8 border-y-2 border-dark-400 py-8 md:w-fit md:flex-row;
+    @apply flex w-full flex-col items-center gap-8 border-y-2 border-dark-400 p-8 md:w-fit md:flex-row;
   }
 
-  /* ADMIN */
+  .doctor-label {
+    @apply flex items-center justify-center gap-3 border-2 border-dark-500 p-2 rounded-md bg-linear-to-br from-[rgba(89,61,155,0.8)] to-[rgba(122,156,224,0.2)];
+  }
+
+  /* Admin */
   .admin-header {
     @apply sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl bg-dark-200 px-[5%] py-5 shadow-lg xl:px-12;
   }
@@ -416,7 +420,7 @@
     @apply !top-2 focus:!ring-0 focus:!ring-offset-0 focus-visible:!border-none focus-visible:!outline-none focus-visible:!ring-transparent focus-visible:!ring-offset-0;
   }
 
-  /*  reacty phone number overrides */
+  /* React phone number overrides */
   .input-phone {
     @apply !h-11 !text-14-medium items-center justify-center !rounded-lg !border !border-dark-500 !bg-dark-400 transition-colors placeholder:!text-dark-600 focus-within:!border-ring focus-within:!ring-3 focus-within:!ring-ring/50 has-aria-invalid:!border-destructive has-aria-invalid:!ring-3 has-aria-invalid:!ring-destructive/20 dark:has-aria-invalid:!border-destructive/50 dark:has-aria-invalid:!ring-destructive/40;
 
