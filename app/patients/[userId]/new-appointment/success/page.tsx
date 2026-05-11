@@ -45,7 +45,7 @@ const SuccessPage = async ({ params, searchParams }: SearchParamProps) => {
         </section>
 
         <section className='request-details'>
-          <p className="text-18-medium">Requested appointment details:</p>
+          <p className="text-18-medium ml-8">Requested appointment details:</p>
           <div className='doctor-label'>
             <Image
               alt='success'
@@ -58,7 +58,7 @@ const SuccessPage = async ({ params, searchParams }: SearchParamProps) => {
             <p className='whitespace-nowrap'>Dr. {doctor?.name}</p>
           </div>
 
-          <div className='flex gap-2 items-center'>
+          <div className='flex gap-2 items-center mr-8'>
             <CalendarIcon className='shad-input-icon' />
             <p>{formatDateTime(appointment?.schedule).dateTime}</p>
           </div>
