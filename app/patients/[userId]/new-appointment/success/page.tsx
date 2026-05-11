@@ -41,11 +41,11 @@ const SuccessPage = async ({ params, searchParams }: SearchParamProps) => {
           <h2 className='header mb-6 max-w-[600px] text-center'>
             Your <span className='text-primary'>appointment request</span> has been successfully submitted!
           </h2>
-          <p className="text-18-medium">We will be in touch shortly to confirm.</p>
+          <p className='text-18-medium'>We will be in touch shortly to confirm.</p>
         </section>
 
         <section className='request-details'>
-          <p className="text-18-medium ml-8">Requested appointment details:</p>
+          <p className='text-18-medium ml-8'>Requested appointment details:</p>
           <div className='doctor-label'>
             <Image
               alt='success'
