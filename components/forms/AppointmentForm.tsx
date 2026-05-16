@@ -12,16 +12,19 @@ import CustomFormField from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { FormFieldType } from "../CustomFormField";
 import { getAppointmentSchema } from "@/lib/validation";
-import { createAppointment } from "@/lib/actions/appointment.actions";
+import { createAppointment, updateAppointment } from "@/lib/actions/appointment.actions";
 import { useRouter } from "next/navigation";
+import { Appointment } from "@/types/appwrite.types";
 
 type AppointmentFormProps = {
   type: AppointmentType;
   userId: string;
   patientId: string;
+  appointment?: Appointment;
+  setOpen?: (open: boolean) => void;
 };
 
-const AppointmentForm = ({ type, userId, patientId }: AppointmentFormProps) => {
+const AppointmentForm = ({ type, userId, patientId, appointment, setOpen }: AppointmentFormProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -32,11 +35,11 @@ const AppointmentForm = ({ type, userId, patientId }: AppointmentFormProps) => {
   const form = useForm<AppointmentFormValues, unknown, AppointmentFormData>({
     resolver: zodResolver(AppointmentFormValidation),
     defaultValues: {
-      primaryPhysician: "",
-      reason: "",
-      note: "",
-      schedule: undefined,
-      cancellationReason: "",
+      primaryPhysician: appointment ? appointment.primaryPhysician : "",
+      reason: appointment ? appointment.reason : "",
+      note: appointment ? appointment.note : "",
+      schedule: appointment ? new Date(appointment.schedule) : undefined,
+      cancellationReason: appointment?.cancellationReason ?? "",
     },
   });
 
@@ -77,6 +80,33 @@ const AppointmentForm = ({ type, userId, patientId }: AppointmentFormProps) => {
         }
 
         setIsLoading(false);
+      } else {
+        const appointmentId = appointment?.$id;
+
+        if (!appointmentId) {
+          throw new Error("Appointment ID is required to update an appointment");
+        }
+
+        const appointmentToUpdate = {
+          userId,
+          appointmentId,
+          appointment: {
+            primaryPhysician: values?.primaryPhysician,
+            schedule: new Date(values?.schedule),
+            status: status as Status,
+            cancellationReason: values?.cancellationReason,
+          },
+          type,
+        };
+
+        const updatedAppointment = await updateAppointment(appointmentToUpdate);
+
+        if (updatedAppointment) {
+          if (setOpen) {
+            setOpen(false);
+          }
+          form.reset();
+        }
       }
     } catch (error) {
       console.error(error);
@@ -86,25 +116,31 @@ const AppointmentForm = ({ type, userId, patientId }: AppointmentFormProps) => {
   let buttonLabel;
 
   switch (type) {
-    case "cancel":
-      buttonLabel = "Cancel Appointment";
+    case AppointmentType.CANCEL:
+      buttonLabel = "Cancel appointment";
       break;
-    case "schedule":
-      buttonLabel = "Schedule Appointment";
+    case AppointmentType.SCHEDULE:
+      buttonLabel = "Schedule appointment";
       break;
     default:
-      buttonLabel = "Submit Apppointment";
+      buttonLabel = "Submit apppointment";
   }
 
   return (
-    <form id='patient-form' onSubmit={form.handleSubmit(onSubmit)} className='space-y-9 flex-1'>
-      <section className='mb-12 space-y-4'>
-        <h1 className='header'>New appointment 🗓️</h1>
-        <p className='text-dark-700 text-18-medium'>Request a new appointment in 10 seconds!</p>
-      </section>
+    <form
+      id='patient-form'
+      onSubmit={form.handleSubmit(onSubmit)}
+      className={`space-y-9 flex-1`}
+    >
+      {type === AppointmentType.CREATE && (
+        <section className='mb-12 space-y-4'>
+          <h1 className='header'>New appointment 🗓️</h1>
+          <p className='text-dark-700 text-18-medium'>Request a new appointment in 10 seconds!</p>
+        </section>
+      )}
 
       {type !== AppointmentType.CANCEL && (
-        <>
+        <div className={`${type === AppointmentType.CREATE ? "space-y-9" : "space-y-4"}  flex-1`}>
           <CustomFormField
             control={form.control}
             formFieldType={FormFieldType.SELECT}
@@ -129,7 +165,7 @@ const AppointmentForm = ({ type, userId, patientId }: AppointmentFormProps) => {
             ))}
           </CustomFormField>
 
-          <div className='flex flex-col gap-4 xl:flex-row'>
+          <div className={`flex flex-col gap-4 ${type === AppointmentType.CREATE && "xl:flex-row"}`}>
             <CustomFormField
               control={form.control}
               formFieldType={FormFieldType.TEXTAREA}
@@ -158,11 +194,11 @@ const AppointmentForm = ({ type, userId, patientId }: AppointmentFormProps) => {
             placeholder='Select appointment date and time'
             showTimeSelect
           />
-        </>
+        </div>
       )}
 
       {type === AppointmentType.CANCEL && (
-        <>
+        <div className={`space-y-4 flex-1`}>
           <CustomFormField
             control={form.control}
             formFieldType={FormFieldType.DATE_PICKER}
@@ -205,7 +241,7 @@ const AppointmentForm = ({ type, userId, patientId }: AppointmentFormProps) => {
             label='Reason for cancellation'
             placeholder='Enter reason for cancellation'
           />
-        </>
+        </div>
       )}
 
       <SubmitButton

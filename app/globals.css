@@ -24,12 +24,15 @@
   --input: #2a3448;
   --ring: #9060fe;
   --input-icon: #7a9ce0;
+  --modal: #21293bf6;
+  --admin-header: #654db3;
+  --stat-card: #2b3954;
   --color-green-500: #b6f09c;
   --color-green-600: #416050;
   --color-blue-500: #79b5ec;
   --color-blue-600: #134f74;
   --color-red-500: #e64064;
-  --color-red-700: #551e2a;
+  --color-red-600: #551e2a;
   --color-light-200: #e8e9e9;
   --color-dark-200: #0d0f10;
   --color-dark-300: #131619;
@@ -59,12 +62,15 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-input-icon: var(--input-icon);
+  --color-modal: var(--modal);
+  --color-admin-header: var(--admin-header);
+  --color-stat-card: var(--stat-card);
   --color-green-500: var(--color-green-500);
   --color-green-600: var(--color-green-600);
   --color-blue-500: var(--color-blue-500);
   --color-blue-600: var(--color-blue-600);
   --color-red-500: var(--color-red-500);
-  --color-red-700: var(--color-red-700);
+  --color-red-600: var(--color-red-600);
   --color-light-200: var(--color-light-200);
   --color-dark-200: var(--color-dark-200);
   --color-dark-300: var(--color-dark-300);
@@ -265,7 +271,7 @@
 
   /* Admin */
   .admin-header {
-    @apply sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl bg-dark-200 px-[5%] py-5 shadow-lg xl:px-12;
+    @apply sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl bg-admin-header px-[5%] py-5 shadow-lg xl:px-12;
   }
 
   .admin-main {
@@ -304,12 +310,12 @@
 
   /* Stat Card */
   .stat-card {
-    @apply flex flex-1 flex-col gap-6 rounded-2xl bg-cover p-6 shadow-lg;
+    @apply flex flex-1 flex-col gap-6 rounded-2xl bg-stat-card p-6 shadow-lg border-t border-[rgba(122,156,224,0.9)];
   }
 
   /* Status Badge */
   .status-badge {
-    @apply flex w-fit items-center gap-2 rounded-full px-4 py-2;
+    @apply flex w-fit items-center gap-2 rounded-full px-2 py-1;
   }
 
   /* Data Table */
@@ -327,7 +333,7 @@
   }
 
   .shad-danger-btn {
-    @apply !bg-red-700 !text-white;
+    @apply !p-5 !bg-red-600 !text-white !text-[16px] !font-medium;
   }
 
   .shad-gray-btn {
@@ -381,8 +387,12 @@
     @apply !text-14-medium !bg-dark-400 !border-dark-500;
   }
 
+  [data-slot="dialog-overlay"] {
+    @apply !bg-black/60;
+  }
+
   .shad-dialog {
-    @apply !bg-dark-400 !border-dark-500;
+    @apply !min-w-md sm:!min-w-md sm:!max-w-xl !p-5 sm:!p-8 !bg-modal !border-0 !border-t-1 border-[rgba(114,97,151,0.7)] !ring-0 !outline-none !shadow-[inset_16px_24px_64px_-24px_rgba(255,255,255,0.04),_0px_24px_64px_-16px_rgba(0,0,0,0.24),_inset_0px_8px_12px_0px_rgba(255,255,255,0.04)];
   }
 
   .shad-dialog button {
@@ -406,15 +416,31 @@
   }
 
   .shad-otp {
-    @apply !w-full !flex !justify-between;
+    @apply !w-full !flex !gap-2 sm:!gap-4 !items-center !justify-center;
   }
 
   .shad-otp-slot {
-    @apply !text-36-bold !justify-center !flex !border !border-dark-500 !rounded-lg !size-16 !gap-4;
+    @apply !text-18-bold sm:!text-36-bold text-primary !justify-center !flex !border !border-primary !rounded-lg !size-10 sm:!size-16;
+
+    div div {
+      @apply !h-4 sm:!h-9;
+    }
+  }
+
+  [data-slot="alert-dialog-overlay"] {
+    @apply !bg-black/60;
   }
 
   .shad-alert-dialog {
-    @apply !space-y-5 !bg-dark-400 !border-dark-500 !outline-none;
+    @apply sm:!min-w-lg sm:!max-w-[530px] !gap-8 !p-5 sm:!p-8 !bg-modal !border-0 !border-t-1 border-[rgba(114,97,151,0.7)] !ring-0 !outline-none !shadow-[inset_16px_24px_64px_-24px_rgba(255,255,255,0.04),_0px_24px_64px_-16px_rgba(0,0,0,0.24),_inset_0px_8px_12px_0px_rgba(255,255,255,0.04)];
+  }
+
+  .shad-alert-header {
+    @apply !text-18-bold !mb-2;
+  }
+
+  .shad-alert-subheader {
+    @apply !text-16-regular !text-dark-700 !text-left sm:!text-left !text-wrap;
   }
 
   .shad-sheet-content button {

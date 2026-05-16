@@ -9,7 +9,7 @@ interface ButtonProps {
 
 const SubmitButton = ({ isLoading, className, children }: ButtonProps) => {
   return (
-    <Button type='submit' disabled={isLoading} className={className ?? "shad-primary-btn w-full"}>
+    <Button type='submit' disabled={isLoading} className={className ?? "shad-primary-btn w-full cursor-pointer"}>
       {isLoading ? (
         <>
           <Spinner data-icon='inline-start' />
