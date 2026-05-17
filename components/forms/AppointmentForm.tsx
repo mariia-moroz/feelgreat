@@ -51,13 +51,13 @@ const AppointmentForm = ({ type, userId, patientId, appointment, setOpen }: Appo
     let status;
     switch (type) {
       case AppointmentType.CREATE:
-        status = AppointmentStatus.SCHEDULLED;
+        status = AppointmentStatus.PENDING;
         break;
       case AppointmentType.CANCEL:
         status = AppointmentStatus.CANCELLED;
         break;
       default:
-        status = AppointmentStatus.PENDING;
+        status = AppointmentStatus.SCHEDULLED;
     }
 
     try {
@@ -93,7 +93,9 @@ const AppointmentForm = ({ type, userId, patientId, appointment, setOpen }: Appo
           appointment: {
             primaryPhysician: values?.primaryPhysician,
             schedule: new Date(values?.schedule),
-            status: status as Status,
+            reason: values?.reason,
+            note: values?.note,
+           status: status as Status,
             cancellationReason: values?.cancellationReason,
           },
           type,
@@ -127,11 +129,7 @@ const AppointmentForm = ({ type, userId, patientId, appointment, setOpen }: Appo
   }
 
   return (
-    <form
-      id='patient-form'
-      onSubmit={form.handleSubmit(onSubmit)}
-      className={`space-y-9 flex-1`}
-    >
+    <form id='patient-form' onSubmit={form.handleSubmit(onSubmit)} className={`space-y-9 flex-1`}>
       {type === AppointmentType.CREATE && (
         <section className='mb-12 space-y-4'>
           <h1 className='header'>New appointment 🗓️</h1>

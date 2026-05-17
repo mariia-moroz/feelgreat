@@ -44,15 +44,15 @@ export const columns: ColumnDef<Appointment>[] = [
     cell: ({ row }) => {
       const doctor = Doctors.find(doctor => doctor.name === row.original.primaryPhysician);
       return (
-        <div className='flex items-center gap-3'>
+        <div className='flex min-w-[120px] items-center gap-3'>
           <Image
             src={doctor?.image ?? ""}
             alt={doctor?.name ?? "doctor"}
             width={100}
             height={100}
-            className='size-8'
+            className='size-8 shrink-0'
           />
-          <p className='whitespace-nowrap text-14-medium'>Dr. {doctor?.name}</p>
+          <p className='text-14-medium whitespace-normal break-words'>Dr. {doctor?.name}</p>
         </div>
       );
     },

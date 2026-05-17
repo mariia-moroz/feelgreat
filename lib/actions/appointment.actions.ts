@@ -4,7 +4,7 @@ import { tablesDB, DATABASE_ID, APPOINTMENT_COLLECTION_ID } from "../appwrite.co
 
 import { ID, Query } from "node-appwrite";
 import { parseStringify } from "../utils";
-import { AppointmentStatus } from "@/constants";
+import { AppointmentStatus, AppointmentType } from "@/constants";
 import { Appointment } from "@/types/appwrite.types";
 import { revalidatePath } from "next/cache";
 
@@ -91,7 +91,7 @@ export const updateAppointment = async ({
       tableId: APPOINTMENT_COLLECTION_ID!,
       rowId: appointmentId,
       data: {
-        ...appointment,
+        ...appointment
       },
     });
 
