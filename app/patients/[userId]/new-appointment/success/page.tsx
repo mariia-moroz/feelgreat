@@ -22,10 +22,10 @@ const SuccessPage = async ({ params, searchParams }: SearchParamProps) => {
           <Image
             alt='logo'
             src='/assets/icons/logo-full.svg'
-            height={1000}
-            width={1000}
+            height={38}
+            width={164}
             loading='eager'
-            className='h-10 w-fit mb-6'
+            className='mb-6 h-10 w-auto'
           />
         </Link>
 

@@ -14,10 +14,10 @@ const NewAppointment = async ({ params }: SearchParamProps) => {
           <Image
             alt='logo'
             src='/assets/icons/logo-full.svg'
-            height={1000}
-            width={1000}
+            height={38}
+            width={164}
             loading='eager'
-            className='mb-12 h-10 w-fit'
+            className='mb-12 h-10 w-auto'
           />
 
           <AppointmentForm type={AppointmentType.CREATE} userId={userId} patientId={patient.$id} />
