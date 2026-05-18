@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FeelGreat
+
+FeelGreat is a patient registration and appointment scheduling platform built for healthcare workflows.
+Patients can create an account, complete their profile, upload identification for verification, and request
+appointments with a selected doctor. An admin dashboard provides visibility into all appointments and supports
+scheduling or cancelling requests after access verification, with SMS confirmations planned as part of the
+booking flow.
+
+Live app: https://ufeelgreat.vercel.app/
+
+## Project Overview
+
+FeelGreat is designed to streamline the appointment request process from both sides:
+
+- Patients can register and provide the information needed before an appointment.
+- Patients can request an appointment with a selected doctor, preferred time, and reason for visit.
+- Admins can review incoming requests and manage appointment statuses from one place.
+
+## Features
+
+### Patient flow
+
+- Create a patient account with personal details
+- Complete registration with:
+  - Phone number
+  - Email
+  - Date of birth
+  - Address
+  - Occupation
+  - Emergency contact details
+- Submit medical information, including:
+  - Primary physician
+  - Insurance provider and policy number
+  - Allergies
+  - Current medication
+  - Family medical history
+  - Past medical history
+- Upload an identification document for verification
+- Accept treatment, disclosure, and privacy consent
+- Request a new appointment with:
+  - Selected doctor
+  - Preferred date and time
+  - Reason for appointment
+  - Additional notes
+- Twilio SMS confirmation after successful appointment creation
+- View a success screen after submitting an appointment request
+
+### Admin flow
+
+- Access the admin area through a 6-digit OTP-style passkey verification screen
+- View appointment statistics for:
+  - Scheduled appointments
+  - Pending appointments
+  - Cancelled appointments
+- Browse all appointment records in a data table
+- Update appointments by scheduling or cancelling them
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- shadcn/ui
+- Appwrite
+- Node Appwrite SDK
+- Twilio (SMS confirmations)
+- React Hook Form
+- Zod
+- TanStack Table
+- React Day Picker
+- React Dropzone
+- Input OTP
+- Sonner
+- Lucide React
+
+## Architecture Notes
+
+- Uses the App Router structure in Next.js
+- Uses server actions for patient and appointment operations
+- Stores patient, doctor, and appointment data in Appwrite Tables DB
+- Uploads identification documents to Appwrite Storage
+- Uses Appwrite Users for patient account creation
+- Includes Appwrite-backed backend services and Twilio SMS confirmation flow
+
+## Environment Variables
+
+Create a `.env.local` file in the project root and configure:
+
+```env
+PROJECT_ID=
+API_KEY=
+DATABASE_ID=
+PATIENT_COLLECTION_ID=
+DOCTOR_COLLECTION_ID=
+APPOINTMENT_COLLECTION_ID=
+NEXT_PUBLIC_BUCKET_ID=
+NEXT_PUBLIC_ENDPOINT=
+NEXT_PUBLIC_ADMIN_PASSKEY=
+```
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Configure environment variables
+
+Add the required Appwrite values to `.env.local`.
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The project is deployed on Vercel:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+https://ufeelgreat.vercel.app/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Folder Highlights
 
-## Deploy on Vercel
+- `app/` - routes and pages
+- `components/` - reusable UI and form components
+- `components/forms/` - patient registration and appointment forms
+- `components/table/` - admin dashboard table
+- `lib/actions/` - server actions for patient and appointment operations
+- `lib/appwrite.config.ts` - Appwrite client configuration
+- `constants/` - shared app constants such as doctors and default form values
+- `types/` - shared TypeScript types
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Current Behavior Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Appointment creation and admin status updates are implemented through Appwrite-backed server actions.
+- Admin protection currently uses a client-side 6-digit passkey check exposed through
+  `NEXT_PUBLIC_ADMIN_PASSKEY`.
+
+## Why FeelGreat
+
+FeelGreat focuses on giving patients a smoother intake experience while giving administrators a clear view of
+appointment demand and scheduling activity. It combines a polished frontend with Appwrite-powered backend
+services to support a practical healthcare booking workflow.
