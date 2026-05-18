@@ -32,6 +32,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
         alt='patient'
         height={1000}
         width={1000}
+        loading='eager'
         className='side-img max-w-[50%]'
       />
     </div>
