@@ -16,7 +16,7 @@ const Admin = async () => {
     <div className='admin-page'>
       <header className='admin-header'>
         <Logo className='mb-0 h-8' />
-        <p className='text-16-semibold'>Admin Dashboard</p>
+        <p className='text-16-semibold'>Admin</p>
       </header>
 
       <main className='admin-main'>
