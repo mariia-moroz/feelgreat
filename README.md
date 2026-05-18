@@ -164,7 +164,6 @@ services to support a practical healthcare booking workflow.
 <img width="1536" height="966" alt="Screenshot 2026-05-18 at 21 44 30" src="https://github.com/user-attachments/assets/ac728c57-73b9-47a4-ba9f-d9009c47f169" />
 <img width="1536" height="999" alt="Screenshot 2026-05-18 at 21 43 17" src="https://github.com/user-attachments/assets/6996245f-1f49-4f5f-a6f1-f9676b97976b" />
 <img width="1536" height="994" alt="Screenshot 2026-05-18 at 21 45 44" src="https://github.com/user-attachments/assets/cd1a1966-1e35-486f-9264-8318faa3aba8" />
-<img width="1536" height="994" alt="Screenshot 2026-05-18 at 21 45 44" src="https://github.com/user-attachments/assets/d3c508e2-0c32-42a4-8921-3b3b7e6e2c9d" />
 <img width="1536" height="994" alt="Screenshot 2026-05-18 at 21 45 59" src="https://github.com/user-attachments/assets/c629874c-71e2-4452-a8d1-346b419fc93b" />
 <img width="1536" height="994" alt="Screenshot 2026-05-18 at 21 47 09" src="https://github.com/user-attachments/assets/2b347b38-f84a-4515-9770-0160e007c70e" />
 <img width="1536" height="994" alt="Screenshot 2026-05-18 at 21 54 15" src="https://github.com/user-attachments/assets/4d4a2e2d-6211-4713-a10e-b85692b9fcde" />
