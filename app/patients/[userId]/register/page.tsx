@@ -1,6 +1,7 @@
 import Image from "next/image";
 import RegisterForm from "@/components/forms/RegisterForm";
 import { getUser } from "@/lib/actions/patient.actions";
+import Logo from "@/components/Logo";
 
 const Register = async ({ params }: SearchParamProps) => {
   const { userId } = await params;
@@ -10,14 +11,7 @@ const Register = async ({ params }: SearchParamProps) => {
     <div className='flex h-screen max-h-screen'>
       <section className='remove-scrollbar page-container'>
         <div className='sub-container max-w-[890px] flex-1 flex-col py-10'>
-          <Image
-            alt='logo'
-            src='/assets/icons/logo-full.svg'
-            height={38}
-            width={164}
-            loading='eager'
-            className='mb-12 h-10 w-auto'
-          />
+         <Logo />
 
           <RegisterForm user={user} />
 

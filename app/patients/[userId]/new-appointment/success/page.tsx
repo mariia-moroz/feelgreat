@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getAppointment } from "@/lib/actions/appointment.actions";
@@ -6,6 +5,7 @@ import { Doctors } from "@/constants";
 import { CalendarIcon } from "lucide-react";
 import { formatDateTime } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import Logo from "@/components/Logo";
 
 const SuccessPage = async ({ params, searchParams }: SearchParamProps) => {
   const { userId } = await params;
@@ -18,16 +18,7 @@ const SuccessPage = async ({ params, searchParams }: SearchParamProps) => {
   return (
     <div className='flex h-screen max-h-screen px-[5%]'>
       <div className='success-img'>
-        <Link href='/'>
-          <Image
-            alt='logo'
-            src='/assets/icons/logo-full.svg'
-            height={38}
-            width={164}
-            loading='eager'
-            className='mb-6 h-10 w-auto'
-          />
-        </Link>
+        <Logo />
 
         <section className='flex flex-col items-center'>
           <Image

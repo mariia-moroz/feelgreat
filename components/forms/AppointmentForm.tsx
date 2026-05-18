@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { SelectItem } from "../ui/select";
+import { toast } from "sonner";
 import { Doctors, AppointmentType, AppointmentStatus } from "@/constants";
 import { useState } from "react";
 import * as z from "zod";
@@ -111,6 +112,7 @@ const AppointmentForm = ({ type, userId, patientId, appointment, setOpen }: Appo
         }
       }
     } catch (error) {
+      toast.error("Something went wrong, please try again");
       console.error(error);
     }
   };

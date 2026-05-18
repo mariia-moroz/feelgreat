@@ -474,7 +474,11 @@
     }
 
     span {
-      @apply !size-[20px] !text-input-icon;
+      @apply !h-5 !w-5 !text-input-icon;
+
+      svg {
+        @apply !h-5 !w-5 !text-input-icon;
+      }
     }
 
     button {

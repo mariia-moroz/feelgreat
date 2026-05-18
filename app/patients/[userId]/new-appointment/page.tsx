@@ -2,23 +2,17 @@ import Image from "next/image";
 import AppointmentForm from "@/components/forms/AppointmentForm";
 import { getPatient } from "@/lib/actions/patient.actions";
 import { AppointmentType } from "@/constants";
+import Logo from "@/components/Logo";
 
 const NewAppointment = async ({ params }: SearchParamProps) => {
   const { userId } = await params;
   const patient = await getPatient(userId);
-  
+
   return (
     <div className='flex h-screen max-h-screen'>
       <section className='remove-scrollbar page-container'>
         <div className='sub-container max-w-[860px] flex-1 justify-between'>
-          <Image
-            alt='logo'
-            src='/assets/icons/logo-full.svg'
-            height={38}
-            width={164}
-            loading='eager'
-            className='mb-12 h-10 w-auto'
-          />
+          <Logo />
 
           <AppointmentForm type={AppointmentType.CREATE} userId={userId} patientId={patient.$id} />
 

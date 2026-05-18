@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { UserIcon, MailIcon, MapPinIcon, CircleUserRoundIcon } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 import * as z from "zod";
 
 import { PatientFormValidation } from "@/lib/validation";
@@ -67,6 +68,7 @@ const RegisterForm = ({ user }: { user: User }) => {
         router.push(`/patients/${user.$id}/new-appointment`);
       }
     } catch (error) {
+      toast.error("Something went wrong, please try again");
       console.log(error);
     }
 
