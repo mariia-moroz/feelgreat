@@ -159,6 +159,8 @@ services to support a practical healthcare booking workflow.
 
 ## Demo
 
+Here you can view the screenshots that demonstrate app functionality
+
 <img width="1535" height="994" alt="Screenshot 2026-05-18 at 21 37 17" src="https://github.com/user-attachments/assets/7f7aaf25-2b58-4c1c-a602-bc9c274be54e" />
 <img width="1535" height="994" alt="Screenshot 2026-05-18 at 21 39 09" src="https://github.com/user-attachments/assets/051a50c5-1db0-4e4b-89c2-aacf989e0afb" />
 <img width="1536" height="966" alt="Screenshot 2026-05-18 at 21 44 30" src="https://github.com/user-attachments/assets/ac728c57-73b9-47a4-ba9f-d9009c47f169" />
