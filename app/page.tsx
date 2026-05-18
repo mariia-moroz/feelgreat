@@ -9,7 +9,7 @@ const Home = async ({ searchParams }: SearchParamProps) => {
   const isAdmin = admin === "true";
 
   return (
-    <div className='flex h-screen max-h-screen'>
+    <div className='flex min-h-[100dvh] md:h-screen md:max-h-screen'>
       {isAdmin && <PasskeyModal />}
 
       <section className='remove-scrollbar page-container'>

@@ -240,11 +240,11 @@
   }
 
   .page-container {
-    @apply relative flex-1 overflow-y-auto px-[5%];
+    @apply relative flex-1 px-[5%] overflow-visible md:overflow-y-auto;
   }
 
   .sub-container {
-    @apply mx-auto flex size-full flex-col py-10;
+    @apply mx-auto flex w-full flex-col py-10 md:size-full;
   }
 
   .side-img {
