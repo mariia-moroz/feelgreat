@@ -92,7 +92,7 @@ const DatePicker = <T extends FieldValues>({
                 <InputGroupInput
                   id='time'
                   type='time'
-                  step='1'
+                  step="60"
                   value={getTimeValue(selectedDate)}
                   onChange={event => {
                     const baseDate = selectedDate ?? new Date();

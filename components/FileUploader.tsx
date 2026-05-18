@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { Path, FieldValues, ControllerRenderProps } from "react-hook-form";
 
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { convertFileToUrl } from "@/lib/utils";
 
@@ -14,9 +14,12 @@ interface FileUploaderProps<T extends FieldValues> {
 }
 
 const FileUploader = <T extends FieldValues>({ field, files }: FileUploaderProps<T>) => {
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    field.onChange(acceptedFiles);
-  }, [field]);
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      field.onChange(acceptedFiles);
+    },
+    [field],
+  );
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
@@ -36,7 +39,7 @@ const FileUploader = <T extends FieldValues>({ field, files }: FileUploaderProps
           <div className='file-upload_label'>
             <p className='text-14-medium'>
               <span className='text-accent'>Click to upload</span>
-               {" or drag and drop"}
+              {" or drag and drop"}
             </p>
             <p>SVG, PNG, JPG or Gif (max 800x400px)</p>
           </div>
