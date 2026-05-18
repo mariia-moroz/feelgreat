@@ -28,10 +28,10 @@ const Register = async ({ params }: SearchParamProps) => {
       <Image
         src='/assets/images/register-img.png'
         alt='register'
-        height={1000}
-        width={1000}
+        height={3294}
+        width={1170}
         loading='eager'
-        className='side-img max-w-[390px]'
+        className='side-img h-auto max-w-[390px]'
       />
     </div>
   );

@@ -30,10 +30,10 @@ const Home = async ({ searchParams }: SearchParamProps) => {
       <Image
         src='/assets/images/home-img.png'
         alt='patient'
-        height={1000}
-        width={1000}
+        height={10983}
+        width={8193}
         loading='eager'
-        className='side-img max-w-[50%] min-h-screen'
+        className='side-img h-auto max-w-[50%]'
       />
     </div>
   );

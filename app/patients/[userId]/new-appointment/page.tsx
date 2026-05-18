@@ -29,10 +29,10 @@ const NewAppointment = async ({ params }: SearchParamProps) => {
       <Image
         src='/assets/images/appointment-img.png'
         alt='appointment'
-        height={1000}
-        width={1000}
+        height={3294}
+        width={1170}
         loading='eager'
-        className='side-img max-w-[390px] bg-bottom'
+        className='side-img h-auto max-w-[390px] bg-bottom'
       />
     </div>
   );
