@@ -77,7 +77,7 @@ const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData, TValu
           disabled={!table.getCanPreviousPage()}
           className='shad-gray-btn'
         >
-          <ArrowBigLeftIcon width={48} height={48} className="stroke-accent fill-accent"/>
+          <ArrowBigLeftIcon width={48} height={48} className='stroke-accent fill-accent' />
         </Button>
         <Button
           variant='outline'
@@ -86,7 +86,7 @@ const DataTable = <TData, TValue>({ columns, data }: DataTableProps<TData, TValu
           disabled={!table.getCanNextPage()}
           className='shad-gray-btn'
         >
-          <ArrowBigRightIcon width={48} height={48} className="stroke-accent fill-accent"/>
+          <ArrowBigRightIcon width={48} height={48} className='stroke-accent fill-accent' />
         </Button>
       </div>
     </div>

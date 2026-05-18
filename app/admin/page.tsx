@@ -11,7 +11,7 @@ const Admin = async () => {
   const { scheduledCount, pendingCount, cancelledCount, totalCount, rows } = appointments;
 
   return (
-    <div className='mx-auto flex max-w-7xl flex-col space-y-14'>
+    <div className='admin-page'>
       <header className='admin-header'>
         <Logo className='mb-0 h-8' />
         <p className='text-16-semibold'>Admin Dashboard</p>

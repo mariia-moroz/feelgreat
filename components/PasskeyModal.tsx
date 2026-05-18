@@ -56,11 +56,11 @@ const PasskeyModal = () => {
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogContent className='shad-alert-dialog sm:max-w-md'>
-        <AlertDialogHeader>
-          <div className='flex items-start justify-between w-full'>
+      <AlertDialogContent className='shad-alert-dialog'>
+        <AlertDialogHeader className='shad-alert-dialog-header'>
+          <div className='shad-alert-header-row'>
             <AlertDialogTitle className='shad-alert-header'>Admin Access Verification</AlertDialogTitle>
-            <X onClick={() => closeModal()} className='cursor-pointer' />
+            <X onClick={() => closeModal()} className='shad-alert-close' />
           </div>
           <AlertDialogDescription className='shad-alert-subheader'>
             To access the admin page, please enter the passkey.
